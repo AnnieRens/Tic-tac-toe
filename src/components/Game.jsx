@@ -21,9 +21,22 @@ const Game = () => {
         setXIsNext(!xIsNext);
     }
 
+    const startNewGame = () => {
+        // return button
+        return (
+            <button className="start__btn" onClick={() => setBoard(Array(9).fill(null))}>Clear</button>
+        )
+    }
+
     return (
-        <div class="wrapper">
+        <div className="wrapper">
+            {startNewGame()}
             <Board squares={board} click={handleClick} />
+        <p className="game__info">
+            {
+                winner ? 'Winner: ' + winner : 'Turn: ' + (xIsNext ? 'X' : 'O')
+            }
+        </p>
         </div>
     );
 }
